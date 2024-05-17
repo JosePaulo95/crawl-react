@@ -1,17 +1,17 @@
-import { UserCard } from "./sections/users/UserCard";
-import { useUsers } from "./sections/users/useUsers";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Users } from "./pages/Users";
+import { Menu } from "./pages/Menu"; // Import the Menu component
 
 export function App() {
-	const users = useUsers();
-
-	return (
-		<div className="App">
-			<h3>⚡⚛️ Vite React Best Practices Template (by Codely)</h3>
-			<h2>Current users</h2>
-
-			{users.map((user) => (
-				<UserCard key={user.name} user={user} />
-			))}
-		</div>
-	);
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Navigate to="/menu" />} /> {/* Redirect to Menu */}
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/users" element={<Users />} />
+        {/* Add a route for the game later */}
+      </Routes>
+    </div>
+  );
 }
